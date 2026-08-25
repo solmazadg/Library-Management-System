@@ -7,7 +7,7 @@ public class Main {
 
         int amount = 0;
 
-
+//        TODO ifleri yaz , iclerin doldur
         System.out.println("========== LIBRARY MANAGEMENT SYSTEM ==========");
         ;
         int pressedButton;

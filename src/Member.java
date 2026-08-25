@@ -1,5 +1,6 @@
 public class Member {
-
+// TODO person classi icerisinde name email age ve member extend edir,
+//  librarian classi extend edir icersinde ayrica librarian id olur
     private int memberId;
     private String name;
     private String mail;

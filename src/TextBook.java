@@ -1,5 +1,5 @@
 public class TextBook extends Book{
-
+    // TODO add constructor override
     private String subject;
     private String educationLevel;
 
@@ -35,7 +35,7 @@ public class TextBook extends Book{
 
     @Override
     public String toString() {
-        return "TextBook{" +
+        return super.toString() + " TextBook{" +
                 "subject='" + subject + '\'' +
                 ", educationLevel='" + educationLevel + '\'' +
                 '}';
