@@ -5,10 +5,9 @@ public class Main {
     public static void main(String[] args) throws InstanceNotFoundException {
        Scanner scan = new Scanner(System.in);
 
-        int amount = 0;
+       int amount = 0;
 
-//        TODO ifleri yaz , iclerin doldur
-        System.out.println("========== LIBRARY MANAGEMENT SYSTEM ==========");
+       System.out.println("========== LIBRARY MANAGEMENT SYSTEM ==========");
         ;
         int pressedButton;
         do{
@@ -49,9 +48,17 @@ public class Main {
 
                     System.out.println("Year:");
                     int year = scan.nextInt();
+                    while (year < 2000 || year > 2026) {
+                        System.out.println("Invalid year. Please enter a valid year:");
+                        year = scan.nextInt();
+                    }
 
                     System.out.println("Price:");
                     double price = scan.nextDouble();
+                    while (price <= 0) {
+                        System.out.println("Price must be greater than 0. Please enter a valid price:");
+                        price = scan.nextDouble();
+                    }
 
                     System.out.println("Available:");
                     boolean available = scan.nextBoolean();
@@ -63,6 +70,7 @@ public class Main {
 
                 case 2:
                     System.out.println("Show All Books.");
+                    Library.showAllBooks();
                     break;
 
                 case 3:
@@ -84,9 +92,17 @@ public class Main {
 
                     System.out.println("Mail:");
                     String mail = scan.nextLine();
+                    while (!mail.contains("@")) {
+                        System.out.println("Invalid mail. Please enter a valid mail:");
+                        mail = scan.nextLine();
+                    }
 
                     System.out.println("Age:");
                     int age = scan.nextInt();
+                    while (age < 18) {
+                        System.out.println("Age must be at least 18. Please enter age:");
+                        age = scan.nextInt();
+                    }
 
                     System.out.println("Active:");
                     boolean active = scan.nextBoolean();
@@ -97,24 +113,33 @@ public class Main {
 
                 case 5:
                     System.out.println("Show All Members.");
+                    Library.showAllMembers();
                     break;
 
                 case 6:
                     System.out.println("Borrow Book.");
+                    System.out.println("Please provide book title:");
+                    String borrowTitle = scan.next();
+                    Library.borrowBook(borrowTitle);
                     break;
 
                 case 7:
                     System.out.println("Return Book.");
+                    System.out.println("Please provide book title:");
+                    String returnTitle = scan.next();
+                    Library.returnBook(returnTitle);
                     break;
 
                 case 8:
                     System.out.println("Show Borrowed Books.");
+                    Library.showBorrowedBooks();
                     break;
 
                 case 9:
                     System.out.println("Show Library Statistics.");
                     Library.countActiveMembers();
                     Library.countAvailableBooks();
+                    Library.libraryReport();
                     break;
 
                 case 0:

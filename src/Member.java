@@ -1,17 +1,12 @@
-public class Member {
-// TODO person classi icerisinde name email age ve member extend edir,
-//  librarian classi extend edir icersinde ayrica librarian id olur
+public class Member extends Person {
+
     private int memberId;
-    private String name;
-    private String mail;
-    private int age;
     private boolean active;
 
-    public Member(int memberId , String name , String mail , int age , boolean active){
+    public Member(int memberId, String name, String mail, int age, boolean active) {
+
+        super(name, mail, age);
         this.memberId = memberId;
-        this.name = name;
-        this.mail = mail;
-        this.age = age;
         this.active = active;
     }
 
@@ -19,35 +14,26 @@ public class Member {
         return memberId;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
     }
 
     public boolean isActive() {
         return active;
     }
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
-        return "Member{" +
+        return super.toString() +  "Member{" +
                 "memberId=" + memberId +
-                ", name='" + name + '\'' +
-                ", mail='" + mail + '\'' +
-                ", age=" + age +
+                ", name='" + getName() + '\'' +
+                ", mail='" + getMail() + '\'' +
+                ", age=" + getAge() +
                 ", active=" + active +
                 '}';
     }
-
 }

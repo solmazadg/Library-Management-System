@@ -125,6 +125,38 @@ public class Library {
             }
         }
     }
+
+    public static void showAllBooks() {
+        for (Book book : books) {
+            if (book != null) {
+                System.out.println(book);
+            }
+        }
+    }
+
+    public static void showAllMembers() {
+        for (Member member : members) {
+            if (member != null) {
+                System.out.println(member);
+            }
+        }
+    }
+
+    public static void showBorrowedBooks() {
+        for (Book book : books) {
+            if (book != null && !book.isAvailable()) {
+                System.out.println(book);
+            }
+        }
+    }
+    public static void libraryReport() {
+
+        StringBuilder report = new StringBuilder();
+        report.append("===== LIBRARY REPORT =====\n");
+        report.append("Number of books: ").append(numberofBooks).append("\n");
+        report.append("Number of members: ").append(numberofMembers).append("\n");
+        System.out.println(report);
+    }
 }
 
 
