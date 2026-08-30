@@ -13,7 +13,7 @@ Technologies
 * GitHub
 
 Features
-* Add Novel and TextBook
+* Add novel and textBook
 * Show and search books
 * Add and show members
 * Borrow and return books
