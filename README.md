@@ -32,7 +32,7 @@ OOP Concepts Used
 
 How to Run
 1. Clone the repository:
-   git clone https://github.com/solmazadg/Library-Management-System
+   Git clone https://github.com/solmazadg/Library-Management-System
 2. Open the project in IntelliJ IDEA.
 3. Run Main.java.
 4. Follow the instructions in the console menu.

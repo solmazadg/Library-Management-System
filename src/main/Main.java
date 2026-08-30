@@ -110,7 +110,8 @@ public class Main {
 
                 case 3:
                     System.out.println("Please provide title:");
-                    String searchTitle = scan.next();
+                    scan.nextLine();
+                    String searchTitle = scan.nextLine();
                     Book foundBook = Library.searchBook(searchTitle);
                     System.out.println(foundBook);
                     break;
@@ -152,16 +153,18 @@ public class Main {
                     break;
 
                 case 6:
-                    System.out.println("Borrow model.Book.");
+                    System.out.println("Borrow Book.");
                     System.out.println("Please provide book title:");
-                    String borrowTitle = scan.next();
+                    scan.nextLine();
+                    String borrowTitle = scan.nextLine();
                     Library.borrowBook(borrowTitle);
                     break;
 
                 case 7:
-                    System.out.println("Return model.Book.");
+                    System.out.println("Return Book.");
                     System.out.println("Please provide book title:");
-                    String returnTitle = scan.next();
+                    scan.nextLine();
+                    String returnTitle = scan.nextLine();
                     Library.returnBook(returnTitle);
                     break;
 
