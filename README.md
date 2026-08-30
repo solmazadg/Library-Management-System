@@ -65,8 +65,9 @@ Example Usage
 9. Show Library Statistics
    → Display library statistics and reports.
 
-0.Exit
+ 0.Exit
    → Exit the application.
 
 UML Diagram
+ 
 The UML class diagram is included as UML_Diagram.pdf.
