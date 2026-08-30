@@ -1,3 +1,5 @@
+package model;
+
 public class Member extends Person {
 
     private int memberId;
@@ -28,7 +30,7 @@ public class Member extends Person {
 
     @Override
     public String toString() {
-        return super.toString() +  "Member{" +
+        return super.toString() +  "model.Member{" +
                 "memberId=" + memberId +
                 ", name='" + getName() + '\'' +
                 ", mail='" + getMail() + '\'' +

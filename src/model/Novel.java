@@ -1,6 +1,6 @@
-import java.lang.classfile.instruction.NewObjectInstruction;
+package model;
 
-public class Novel extends Book{
+public class Novel extends Book {
 
     private String genre;
     private int numberOfPages;
@@ -29,7 +29,7 @@ public class Novel extends Book{
     }
 
     public void displayDetails() {
-        System.out.println("This is a Novel.");
+        System.out.println("This is a model.Novel.");
         System.out.println("Title: " + getTitle());
         System.out.println("Genre: " + genre);
         System.out.println("Number of pages: " + numberOfPages);
@@ -37,7 +37,7 @@ public class Novel extends Book{
 
     @Override
     public String toString() {
-        return super.toString() + " Novel{" +
+        return super.toString() + " model.Novel{" +
                 "genre='" + genre + '\'' +
                 ", numberOfPages=" + numberOfPages +
                 '}';

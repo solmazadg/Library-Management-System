@@ -1,3 +1,5 @@
+package model;
+
 public class Librarian extends Person {
 
         private int librarianId;
@@ -16,10 +18,10 @@ public class Librarian extends Person {
     public void setLibrarianId(int librarianId) {
         this.librarianId = librarianId;
     }
-
+    
     @Override
         public String toString() {
-            return super.toString() +  "Librarian{" +
+            return super.toString() +  "model.Librarian{" +
                     "librarianId=" + librarianId +
                     ", name='" + getName() + '\'' +
                     ", mail='" + getMail() + '\'' +

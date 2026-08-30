@@ -1,4 +1,6 @@
-public class TextBook extends Book{
+package model;
+
+public class TextBook extends Book {
 
     private String subject;
     private String educationLevel;
@@ -27,7 +29,7 @@ public class TextBook extends Book{
         this.educationLevel = educationLevel;
     }
     public void displayDetails() {
-        System.out.println("This is a TextBook.");
+        System.out.println("This is a model.TextBook.");
         System.out.println("Title: " + getTitle());
         System.out.println("Subject: " + subject);
         System.out.println("Education level: " + educationLevel);
@@ -35,7 +37,7 @@ public class TextBook extends Book{
 
     @Override
     public String toString() {
-        return super.toString() + " TextBook{" +
+        return super.toString() + " model.TextBook{" +
                 "subject='" + subject + '\'' +
                 ", educationLevel='" + educationLevel + '\'' +
                 '}';

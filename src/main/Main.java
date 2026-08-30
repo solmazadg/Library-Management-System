@@ -1,3 +1,11 @@
+package main;
+
+import model.Book;
+import model.Member;
+import model.Novel;
+import model.TextBook;
+import service.Library;
+
 import javax.management.InstanceNotFoundException;
 import java.util.Scanner;
 
@@ -12,15 +20,15 @@ public class Main {
         int pressedButton;
         do{
             System.out.println("""
-                                1. Add Book
+                                1. Add model.Book
                                 2. Show All Books
-                                3. Search Book
-                                4. Add Member
+                                3. Search model.Book
+                                4. Add model.Member
                                 5. Show All Members
-                                6. Borrow Book
-                                7. Return Book
+                                6. Borrow model.Book
+                                7. Return model.Book
                                 8. Show Borrowed Books
-                                9. Show Library Statistics
+                                9. Show service.Library Statistics
                                 0. Exit
                               """);
             System.out.println("Salam. Zehmet olmasa, yuxaridaki menyudan etmek istediyiniz emeliyyatin nomresini secin:");
@@ -28,16 +36,17 @@ public class Main {
             switch (pressedButton) {
 
                 case 1:
-                    System.out.println("Add Book.");
+                    System.out.println("Add model.Book.");
 
                     System.out.println("Choose book type:");
-                    System.out.println("1. Novel");
-                    System.out.println("2. TextBook");
+                    System.out.println("1. model.Novel");
+                    System.out.println("2. model.TextBook");
                     int bookType = scan.nextInt();
                     scan.nextLine();
 
+
                     System.out.println("BookId:");
-                    int bookId = scan.nextInt();
+                    Integer bookId = scan.nextInt();
                     scan.nextLine();
 
                     System.out.println("Title:");
@@ -61,10 +70,36 @@ public class Main {
                     }
 
                     System.out.println("Available:");
-                    boolean available = scan.nextBoolean();
+                    Boolean available = scan.nextBoolean();
 
-                    Book book = new Book(bookId, title, author, year, price, available);
-                    Library.addBook(book);
+                    if (bookType == 1) {
+
+                        scan.nextLine();
+
+                        System.out.println("Genre:");
+                        String genre = scan.nextLine();
+
+                        System.out.println("Number of pages:");
+                        int numberOfPages = scan.nextInt();
+
+                        Book book = new Novel(bookId, title, author, year, price, available, genre, numberOfPages);
+
+                        Library.addBook(book);
+
+                    } else if (bookType == 2) {
+
+                        scan.nextLine();
+
+                        System.out.println("Subject:");
+                        String subject = scan.nextLine();
+
+                        System.out.println("Education level:");
+                        String educationLevel = scan.nextLine();
+
+                        Book book = new TextBook(bookId, title, author, year, price, available, subject, educationLevel);
+
+                        Library.addBook(book);
+                    }
 
                     break;
 
@@ -81,7 +116,7 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("Add Member.");
+                    System.out.println("Add model.Member.");
 
                     System.out.println("MemberId:");
                     int memberId = scan.nextInt();
@@ -117,14 +152,14 @@ public class Main {
                     break;
 
                 case 6:
-                    System.out.println("Borrow Book.");
+                    System.out.println("Borrow model.Book.");
                     System.out.println("Please provide book title:");
                     String borrowTitle = scan.next();
                     Library.borrowBook(borrowTitle);
                     break;
 
                 case 7:
-                    System.out.println("Return Book.");
+                    System.out.println("Return model.Book.");
                     System.out.println("Please provide book title:");
                     String returnTitle = scan.next();
                     Library.returnBook(returnTitle);
@@ -136,7 +171,7 @@ public class Main {
                     break;
 
                 case 9:
-                    System.out.println("Show Library Statistics.");
+                    System.out.println("Show service.Library Statistics.");
                     Library.countActiveMembers();
                     Library.countAvailableBooks();
                     Library.libraryReport();

@@ -1,9 +1,15 @@
+package service;
+
+import model.Book;
+import model.Member;
+import model.Person;
+
 import javax.management.InstanceNotFoundException;
 
 public class Library {
 
     private static Book[] books = new Book[100];
-    private static Member[] members = new Member[100];
+    private static Person[] members = new Person[100];
     private static int numberofBooks = 0;
     private static int numberofMembers = 0;
 
@@ -12,7 +18,7 @@ public class Library {
         books[numberofBooks++] = book;
     }
 
-    public static void addMember(Member member) {
+    public static void addMember(Person member) {
         members[numberofMembers++] = member;
     }
 
@@ -22,7 +28,7 @@ public class Library {
                 return book;
             }
         }
-        throw new InstanceNotFoundException("Book not found");
+        throw new InstanceNotFoundException("model.Book not found");
     }
 
     public static Book searchBook(String title, String author) throws InstanceNotFoundException {
@@ -31,38 +37,38 @@ public class Library {
                 return book;
             }
         }
-        throw new InstanceNotFoundException("Book not found");
+        throw new InstanceNotFoundException("model.Book not found");
     }
 
-    public static Member findMember(String name) throws InstanceNotFoundException {
-        for (Member member : members) {
+    public static Person findMember(String name) throws InstanceNotFoundException {
+        for (Person member : members) {
             if (member != null && member.getName().equals(name)) {
                 return member;
             }
         }
-        throw new InstanceNotFoundException("Member not found");
+        throw new InstanceNotFoundException("model.Member not found");
     }
 
-    public static Member findMember(int memberId) throws InstanceNotFoundException {
-        for (Member member : members) {
-            if (member != null && member.getMemberId() == memberId) {
+    public static Person findMember(int memberId) throws InstanceNotFoundException {
+        for (Person member : members) {
+            if (member != null && ((Member) member).getMemberId() == memberId) {
                 return member;
             }
         }
 
-        throw new InstanceNotFoundException("Member not found");
+        throw new InstanceNotFoundException("model.Member not found");
     }
 
     public static void borrowBook(String title) throws InstanceNotFoundException {
         Book bookByTitle = searchBook(title);
         bookByTitle.setAvailable(false);
-        System.out.println("Book is borrowed");
+        System.out.println("model.Book is borrowed");
     }
 
     public static void returnBook(String title) throws InstanceNotFoundException {
         Book bookByTitle = searchBook(title);
         bookByTitle.setAvailable(true);
-        System.out.println("Book is returned.");
+        System.out.println("model.Book is returned.");
     }
 
     public static void displayInformation() {
@@ -71,7 +77,7 @@ public class Library {
             System.out.println(book);
         }
         System.out.println("These are available books: ");
-        for (Member member : members) {
+        for (Person member : members) {
             System.out.println(member);
         }
     }
@@ -88,8 +94,8 @@ public class Library {
 
     public static void countActiveMembers() {
         int count = 0;
-        for (Member member : members) {
-            if (member != null && member.isActive()) {
+        for (Person member : members) {
+            if (member != null && ((Member)member).isActive()) {
                 count++;
             }
         }
@@ -121,7 +127,7 @@ public class Library {
     public static void findBookByPrice(double price)  {
         for (Book book : books) {
             if (book != null && book.getPrice() == price) {
-                System.out.println("Book found: " + book);
+                System.out.println("model.Book found: " + book);
             }
         }
     }
@@ -135,7 +141,7 @@ public class Library {
     }
 
     public static void showAllMembers() {
-        for (Member member : members) {
+        for (Person member : members) {
             if (member != null) {
                 System.out.println(member);
             }
