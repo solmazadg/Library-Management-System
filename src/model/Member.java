@@ -20,7 +20,6 @@ public class Member extends Person {
         this.memberId = memberId;
     }
 
-
     public boolean isActive() {
         return active;
     }

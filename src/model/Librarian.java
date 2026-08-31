@@ -18,7 +18,7 @@ public class Librarian extends Person {
     public void setLibrarianId(int librarianId) {
         this.librarianId = librarianId;
     }
-    
+
     @Override
         public String toString() {
             return super.toString() +  "model.Librarian{" +
@@ -28,7 +28,6 @@ public class Librarian extends Person {
                     ", age=" + getAge() +
                     '}';
         }
-
 }
 
 

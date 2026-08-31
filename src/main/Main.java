@@ -36,160 +36,232 @@ public class Main {
             switch (pressedButton) {
 
                 case 1:
-                    System.out.println("Add model.Book.");
+                        addBook(scan);
+                        break;
 
-                    System.out.println("Choose book type:");
-                    System.out.println("1. model.Novel");
-                    System.out.println("2. model.TextBook");
-                    int bookType = scan.nextInt();
+                case 2:
+                        showAllBooks();
+                        break;
+
+                case 3:
+                        searchBook(scan);
+                        break;
+
+                case 4:
+                        addMember(scan);
+                        break;
+
+                case 5:
+                        showAllMembers();
+                        break;
+
+                case 6:
+                        borrowBook(scan);
+                        break;
+
+                case 7:
+                        returnBook(scan);
+                        break;
+
+                case 8:
+                        showBorrowedBooks();
+                        break;
+
+                case 9:
+                        showLibraryStatistics();
+                        break;
+
+                case 0:
+                        exitProgram();
+                        break;
+
+                default:
+                        System.out.println("Invalid choice!");
+                }
+
+            } while (pressedButton != 0);
+        }
+
+
+        public static void addBook(Scanner scan) {
+
+            System.out.println("Add Book.");
+
+            System.out.println("""
+                Choose book type:
+                1. Novel
+                2. TextBook
+                """);
+
+            int bookType = scan.nextInt();
+            scan.nextLine();
+
+            System.out.println("BookId:");
+            int bookId = scan.nextInt();
+            scan.nextLine();
+
+            System.out.println("Title:");
+            String title = scan.nextLine();
+
+            System.out.println("Author:");
+            String author = scan.nextLine();
+
+            System.out.println("Year:");
+            int year = scan.nextInt();
+
+            while (year < 2000 || year > 2026) {
+                System.out.println("Invalid year. " +
+                        "Please enter a valid year:");
+                year = scan.nextInt();
+            }
+
+            System.out.println("Price:");
+            double price = scan.nextDouble();
+
+            while (price <= 0) {
+                System.out.println("Price must be greater than 0. " +
+                        "Please enter a valid price:");
+                price = scan.nextDouble();
+            }
+
+            System.out.println("Available:");
+            boolean available = scan.nextBoolean();
+
+            switch (bookType) {
+                case 1:
                     scan.nextLine();
+                    System.out.println("Genre:");
+                    String genre = scan.nextLine();
 
+                    System.out.println("Number of pages:");
+                    int numberOfPages = scan.nextInt();
 
-                    System.out.println("BookId:");
-                    Integer bookId = scan.nextInt();
-                    scan.nextLine();
-
-                    System.out.println("Title:");
-                    String title = scan.nextLine();
-
-                    System.out.println("Author:");
-                    String author = scan.nextLine();
-
-                    System.out.println("Year:");
-                    int year = scan.nextInt();
-                    while (year < 2000 || year > 2026) {
-                        System.out.println("Invalid year. Please enter a valid year:");
-                        year = scan.nextInt();
-                    }
-
-                    System.out.println("Price:");
-                    double price = scan.nextDouble();
-                    while (price <= 0) {
-                        System.out.println("Price must be greater than 0. Please enter a valid price:");
-                        price = scan.nextDouble();
-                    }
-
-                    System.out.println("Available:");
-                    Boolean available = scan.nextBoolean();
-
-                    if (bookType == 1) {
-
-                        scan.nextLine();
-
-                        System.out.println("Genre:");
-                        String genre = scan.nextLine();
-
-                        System.out.println("Number of pages:");
-                        int numberOfPages = scan.nextInt();
-
-                        Book book = new Novel(bookId, title, author, year, price, available, genre, numberOfPages);
-
-                        Library.addBook(book);
-
-                    } else if (bookType == 2) {
-
-                        scan.nextLine();
-
-                        System.out.println("Subject:");
-                        String subject = scan.nextLine();
-
-                        System.out.println("Education level:");
-                        String educationLevel = scan.nextLine();
-
-                        Book book = new TextBook(bookId, title, author, year, price, available, subject, educationLevel);
-
-                        Library.addBook(book);
-                    }
-
+                    Book book1 = new Novel(bookId, title, author,
+                            year, price, available, genre, numberOfPages);
+                    Library.addBook(book1);
                     break;
 
                 case 2:
-                    System.out.println("Show All Books.");
-                    Library.showAllBooks();
-                    break;
-
-
-                    case 3:
-                    System.out.println("Please provide title:");
                     scan.nextLine();
-                    String searchTitle = scan.nextLine();
-                    Book foundBook = Library.searchBook(searchTitle);
-                    System.out.println(foundBook);
-                    break;
+                    System.out.println("Subject:");
+                    String subject = scan.nextLine();
 
-                case 4:
-                    System.out.println("Add model.Member.");
+                    System.out.println("Education level:");
+                    String educationLevel = scan.nextLine();
 
-                    System.out.println("MemberId:");
-                    int memberId = scan.nextInt();
-                    scan.nextLine();
-
-                    System.out.println("Name:");
-                    String name = scan.nextLine();
-
-                    System.out.println("Mail:");
-                    String mail = scan.nextLine();
-                    while (!mail.contains("@")) {
-                        System.out.println("Invalid mail. Please enter a valid mail:");
-                        mail = scan.nextLine();
-                    }
-
-                    System.out.println("Age:");
-                    int age = scan.nextInt();
-                    while (age < 18) {
-                        System.out.println("Age must be at least 18. Please enter age:");
-                        age = scan.nextInt();
-                    }
-
-                    System.out.println("Active:");
-                    boolean active = scan.nextBoolean();
-
-                    Member member = new Member(memberId, name, mail, age, active);
-                    Library.addMember(member);
-                    break;
-
-                case 5:
-                    System.out.println("Show All Members.");
-                    Library.showAllMembers();
-                    break;
-
-                case 6:
-                    System.out.println("Borrow Book.");
-                    System.out.println("Please provide book title:");
-                    scan.nextLine();
-                    String borrowTitle = scan.nextLine();
-                    Library.borrowBook(borrowTitle);
-                    break;
-
-                case 7:
-                    System.out.println("Return Book.");
-                    System.out.println("Please provide book title:");
-                    scan.nextLine();
-                    String returnTitle = scan.nextLine();
-                    Library.returnBook(returnTitle);
-                    break;
-
-                case 8:
-                    System.out.println("Show Borrowed Books.");
-                    Library.showBorrowedBooks();
-                    break;
-
-                case 9:
-                    System.out.println("Show service.Library Statistics.");
-                    Library.countActiveMembers();
-                    Library.countAvailableBooks();
-                    Library.libraryReport();
-                    break;
-
-                case 0:
-                    System.out.println("Xos istirahetler. Novbeti defe gorusmek uzre!");
+                    Book book2 = new TextBook(bookId, title, author, year,
+                            price, available, subject, educationLevel);
+                    Library.addBook(book2);
                     break;
 
                 default:
-                    System.out.println("Yanlis secim etdiniz!");
+                    System.out.println("Invalid book type!");
+                    break;
+            }
+        }
+
+
+        public static void showAllBooks() {
+            System.out.println("Show All Books.");
+            Library.showAllBooks();
+        }
+
+
+        public static void searchBook(Scanner scan) throws InstanceNotFoundException {
+            System.out.println("Please provide title:");
+
+            scan.nextLine();
+            String searchTitle = scan.nextLine();
+
+            Book foundBook = Library.searchBook(searchTitle);
+
+            System.out.println(foundBook);
+        }
+
+
+        public static void addMember(Scanner scan) {
+            System.out.println("Add Member.");
+
+            System.out.println("MemberId:");
+            int memberId = scan.nextInt();
+
+            scan.nextLine();
+
+            System.out.println("Name:");
+            String name = scan.nextLine();
+
+            System.out.println("Mail:");
+            String mail = scan.nextLine();
+
+            while (!mail.contains("@")) {
+                System.out.println("Invalid mail. Please enter a valid mail:");
+                mail = scan.nextLine();
             }
 
-        } while (pressedButton != 0);
+            System.out.println("Age:");
+            int age = scan.nextInt();
 
+            while (age < 18) {
+                System.out.println("Age must be at least 18. Please enter age:");
+                age = scan.nextInt();
+            }
+
+            System.out.println("Active:");
+            boolean active = scan.nextBoolean();
+
+            Member member = new Member(memberId, name,
+                    mail, age, active);
+
+            Library.addMember(member);
+        }
+
+
+        public static void showAllMembers() {
+            System.out.println("Show All Members.");
+            Library.showAllMembers();
+        }
+
+
+        public static void borrowBook(Scanner scan) throws InstanceNotFoundException {
+            System.out.println("Borrow Book.");
+            System.out.println("Please provide book title:");
+
+            scan.nextLine();
+
+            String borrowTitle = scan.nextLine();
+
+            Library.borrowBook(borrowTitle);
+        }
+
+
+        public static void returnBook(Scanner scan) throws InstanceNotFoundException {
+            System.out.println("Return Book.");
+            System.out.println("Please provide book title:");
+
+            scan.nextLine();
+
+            String returnTitle = scan.nextLine();
+
+            Library.returnBook(returnTitle);
+        }
+
+
+        public static void showBorrowedBooks() {
+            System.out.println("Show Borrowed Books.");
+            Library.showBorrowedBooks();
+        }
+
+
+        public static void showLibraryStatistics() {
+            System.out.println("Show Library Statistics.");
+
+            Library.countActiveMembers();
+            Library.countAvailableBooks();
+            Library.libraryReport();
+        }
+
+
+        public static void exitProgram() {
+            System.out.println("Xos istirahetler. Novbeti defe gorusmek uzre!");
+        }
     }
-}

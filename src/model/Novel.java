@@ -30,10 +30,15 @@ public class Novel extends Book {
     }
 
     public void displayDetails() {
-        System.out.println("This is a model.Novel.");
-        System.out.println("Title: " + getTitle());
-        System.out.println("Genre: " + genre);
-        System.out.println("Number of pages: " + numberOfPages);
+        System.out.println("This is a Novel.\n" +
+                           "Title: " + getTitle() + "\n" +
+                           "Genre: " + genre + "\n" +
+                           "Number of pages: " + numberOfPages);
+    }
+
+    @Override
+    public double getFinalPrice() {
+        return getPrice() * 0.90;
     }
 
     @Override
@@ -42,9 +47,5 @@ public class Novel extends Book {
                 "genre='" + genre + '\'' +
                 ", numberOfPages=" + numberOfPages +
                 '}';
-    }
-    @Override
-    public double getFinalPrice() {
-        return getPrice() * 0.90;
     }
 }

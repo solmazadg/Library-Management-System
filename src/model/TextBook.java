@@ -26,14 +26,16 @@ public class TextBook extends Book {
         return educationLevel;
     }
 
-    public void setEducationLevel(String educationLevel) {
-        this.educationLevel = educationLevel;
-    }
     public void displayDetails() {
-        System.out.println("This is a model.TextBook.");
-        System.out.println("Title: " + getTitle());
-        System.out.println("Subject: " + subject);
-        System.out.println("Education level: " + educationLevel);
+        System.out.println("This is a model.TextBook.\n" +
+                           "Title: " + getTitle() + "\n" +
+                           "Subject: " + subject + "\n" +
+                           "Education level: " + educationLevel);
+    }
+
+    @Override
+    public double getFinalPrice() {
+        return getPrice() * 0.50;
     }
 
     @Override
@@ -42,9 +44,5 @@ public class TextBook extends Book {
                 "subject='" + subject + '\'' +
                 ", educationLevel='" + educationLevel + '\'' +
                 '}';
-    }
-    @Override
-    public double getFinalPrice() {
-        return getPrice() * 0.50;
     }
 }

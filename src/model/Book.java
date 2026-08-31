@@ -8,8 +8,6 @@ public class Book {
     private int year;
     private double price;
     private boolean available;
-
-
     public Book (int bookId , String title , String author , int year , double price , boolean available){
         this.bookId = bookId;
         this.title = title;
@@ -48,10 +46,15 @@ public class Book {
     }
 
     public void displayDetails() {
-        System.out.println("Title: " + title);
-        System.out.println("Author: " + author);
-        System.out.println("Year: " + year);
+        System.out.println("Title: " + title + "\n" +
+                           "Author: " + author + "\n" +
+                           "Year: " + year);
     }
+
+    public double getFinalPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         return "model.Book{" +
@@ -62,10 +65,6 @@ public class Book {
                 ", price=" + price +
                 ", available=" + available +
                 '}';
-    }
-
-    public double getFinalPrice() {
-        return price;
     }
 }
 

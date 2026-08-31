@@ -101,6 +101,7 @@ public class Library {
         }
         System.out.println("Number of active members: " + count);
     }
+
     public static void findMostExpensiveBook() {
         Book mostExpensive = books[0];
 
@@ -148,7 +149,6 @@ public class Library {
         }
     }
 
-
     public static void showBorrowedBooks() {
         for (Book book : books) {
             if (book != null && !book.isAvailable()) {
@@ -156,6 +156,7 @@ public class Library {
             }
         }
     }
+
     public static void libraryReport() {
 
         StringBuilder report = new StringBuilder();
